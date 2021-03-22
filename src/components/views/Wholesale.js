@@ -1,11 +1,11 @@
 import Layout from '../containers/Layout';
 
-function Main() {
+function Wholesale() {
   return (
     <Layout>
-      <div>hello world!!</div>
+      <div>Wholesale world!!</div>
     </Layout>
   );
 }
 
-export default Main;
+export default Wholesale;

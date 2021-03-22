@@ -1,11 +1,11 @@
 import Layout from '../containers/Layout';
 
-function Login() {
+function Customer() {
   return (
     <Layout>
-      <div>Login world!!</div>
+      <div>Customer world!!</div>
     </Layout>
   );
 }
 
-export default Login;
+export default Customer;
