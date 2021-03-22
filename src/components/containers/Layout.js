@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
 import Header from './Header';
+import RollingBanner from './RollingBanner';
 
 function Layout(props) {
   return (
     <S.Container>
       <Header />
+      <RollingBanner />
       <div>{props.children}</div>
     </S.Container>
   );
