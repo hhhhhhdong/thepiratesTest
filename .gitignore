@@ -25,3 +25,5 @@ yarn-error.log*
 style.css
 
 package-lock.json
+
+demo_data.js
