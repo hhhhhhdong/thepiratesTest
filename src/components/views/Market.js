@@ -1,15 +1,17 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { storeData } from '../data/demo_data';
 
 import Layout from '../containers/Layout';
 import Filter from '../utils/Filter';
-import { storeData } from '../data/demo_data';
+import Search from '../utils/Search';
 
 function Market() {
   const [Data, setData] = useState(storeData);
   return (
     <Layout>
       <Filter Data={Data} setData={setData} />
+      <Search />
       {Data.map((v) => (
         <S.StoreCardWrap>
           <div>
