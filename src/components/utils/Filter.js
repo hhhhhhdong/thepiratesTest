@@ -3,7 +3,9 @@ import styled from 'styled-components';
 
 import { zoneData, itemData, storeData } from '../data/demo_data';
 
-function Filter({ setData }) {
+function Filter({ setData, Data }) {
+  const locationRef = useRef();
+  const itemRef = useRef();
   const [OpenLocation, setOpenLocation] = useState(false);
   const [OpenItem, setOpenItem] = useState(false);
 
@@ -29,30 +31,47 @@ function Filter({ setData }) {
         }
       }
     }
+    locationRef.current.innerText = e.target.innerText;
+    setOpenLocation(false);
     setData(filteredData);
   };
   const onClickItem = (e) => {
+    if (!(e.target.tagName === 'LI')) return;
     e.preventDefault();
-    console.log(itemData[e.target.dataset.index]);
+    const selectedData = itemData[e.target.dataset.index].label.split(',');
+    const filteredData = [];
+    for (let item of selectedData) {
+      for (let store of storeData) {
+        if (!(store.description.indexOf(item) === -1)) {
+          filteredData.push(store);
+        }
+      }
+    }
+    itemRef.current.innerText = e.target.innerText;
+    setOpenItem(false);
+    setData(filteredData);
   };
 
   return (
     <>
       <S.Container>
         <S.Filter onClick={onClickLocationBtn}>
-          <p>
-            모든 지역 <span>▾</span>
-          </p>
+          <div>
+            <em ref={locationRef}>모든 지역</em>
+            <span>▾</span>
+          </div>
         </S.Filter>
         <S.Filter onClick={onClickItemBtn}>
-          <p>
-            모든 품목 <span>▾</span>
-          </p>
+          <div>
+            <em ref={itemRef}>모든 품목</em>
+            <span>▾</span>
+          </div>
         </S.Filter>
         <S.Filter>
-          <p>
-            기본 순 <span>▾</span>
-          </p>
+          <div>
+            <em>기본 순</em>
+            <span>▾</span>
+          </div>
         </S.Filter>
       </S.Container>
       {OpenLocation && (
@@ -98,11 +117,12 @@ S.Filter = styled.div`
   width: 100%;
   height: 40px;
   border-bottom: 0.5px solid gray;
-  p {
+  border-right: 0.5px solid gray;
+  div {
     text-align: center;
+  }
+  em {
     line-height: 40px;
-    width: 100%;
-    height: 100%;
   }
   ul {
     border: 1px solid red;

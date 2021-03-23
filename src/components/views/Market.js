@@ -9,7 +9,7 @@ function Market() {
   const [Data, setData] = useState(storeData);
   return (
     <Layout>
-      <Filter setData={setData} />
+      <Filter Data={Data} setData={setData} />
       {Data.map((v) => (
         <S.StoreCardWrap>
           <div>
