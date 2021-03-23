@@ -1,38 +1,18 @@
 import { useCallback, useState } from 'react';
 import styled, { css } from 'styled-components';
+import { bannerData } from '../data/demo_data';
 
 function RollingBanner() {
   const [IsOpened, setIsOpened] = useState(false);
-  const [RollingBannerData, setRollingBannerData] = useState([
-    {
-      label: '활모듬회(소)',
-      price: '38,000원→30,000원',
-      comment: '쿠폰 할인가',
-      outLink: '',
-      zoneLabel: '가락',
-      permalink: '가락시장놀부수산',
-      uri: '가락시장놀부수산',
-    },
-    {
-      label: '활새우(대)',
-      price: '25,000원/kg',
-      comment: '전국최저가',
-      outLink: '',
-      zoneLabel: '인천',
-      permalink: '인천종합연안부두어시장서림상회',
-      uri: '인천종합연안부두어시장서림상회',
-    },
-  ]);
 
   const onClickBannerOpen = useCallback((e) => {
     e.preventDefault();
     setIsOpened((state) => !state);
-    console.log('asdf');
   }, []);
   return (
-    <S.Container IsOpened={IsOpened} RollingBannerLength={RollingBannerData.length}>
-      <S.BannerWrap IsOpened={IsOpened} RollingBannerLength={RollingBannerData.length}>
-        {RollingBannerData.map((item) => (
+    <S.Container IsOpened={IsOpened} RollingBannerLength={bannerData.length}>
+      <S.BannerWrap IsOpened={IsOpened} RollingBannerLength={bannerData.length}>
+        {bannerData.map((item) => (
           <li key={item.label}>
             <p>{item.label}</p>
             <p>{item.price}</p>
@@ -106,8 +86,8 @@ S.Container = styled.div`
     right: 0;
     cursor: pointer;
     img {
-      padding: 5px;
-      width: 30px;
+      padding: 10px;
+      width: 40px;
       transition: all 0.3s ease-in-out;
     }
   }

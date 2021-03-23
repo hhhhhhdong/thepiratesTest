@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 
-import { zoneData, itemData } from '../data/demo_data';
+import { zoneData, itemData, storeData } from '../data/demo_data';
 
-function Filter(props) {
+function Filter({ setData }) {
   const [OpenLocation, setOpenLocation] = useState(false);
   const [OpenItem, setOpenItem] = useState(false);
 
@@ -20,7 +20,16 @@ function Filter(props) {
 
   const onClickLocation = (e) => {
     e.preventDefault();
-    console.log(zoneData[e.target.dataset.index]);
+    const filteredData = [];
+    const selectedData = zoneData[e.target.dataset.index];
+    for (let location of selectedData.locations) {
+      for (let store of storeData) {
+        if (location.label === store.market) {
+          filteredData.push(store);
+        }
+      }
+    }
+    setData(filteredData);
   };
   const onClickItem = (e) => {
     e.preventDefault();

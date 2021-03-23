@@ -55,5 +55,9 @@ const GlobalStyle = createGlobalStyle`
   ol, ul {
     list-style: none;
   }
+
+  em {
+    font-style: normal;
+  }
   
   `;

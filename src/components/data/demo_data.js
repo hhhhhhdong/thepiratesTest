@@ -257,7 +257,7 @@ export var itemData = [
 ];
 
 // 가게 목록
-var storeData = [
+export var storeData = [
   {
     description: '대게, 킹크랩, 꽃게 전문 노량진수산시장 부안꽃게',
     uri: '/노량진수산시장부안꽃게',

@@ -8,7 +8,7 @@ function Layout(props) {
     <S.Container>
       <Header />
       <RollingBanner />
-      <div>{props.children}</div>
+      <S.Children>{props.children}</S.Children>
     </S.Container>
   );
 }
@@ -20,4 +20,7 @@ S.Container = styled.div`
   background-color: #f1f2f3;
   margin: 0 auto;
   width: 420px;
+`;
+S.Children = styled.div`
+  background-color: #eee;
 `;
