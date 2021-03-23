@@ -36,6 +36,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
     padding: 0;  
+    box-sizing: border-box;
   }
 
   html {
@@ -43,7 +44,6 @@ const GlobalStyle = createGlobalStyle`
   }
   body {
     height:100%;
-    box-sizing: border-box;
     background-color: #333333;
   }
 
