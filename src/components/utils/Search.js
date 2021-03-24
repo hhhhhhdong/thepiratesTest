@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { zoneData, itemData, storeData } from '../data/demo_data';
+import { storeData } from '../data/demo_data';
 
 function Search({ setData }) {
   const [Text, setText] = useState('');
@@ -14,7 +14,7 @@ function Search({ setData }) {
         !(v.description.indexOf(Text) === -1) || !(v.label.indexOf(Text) === -1) || !(v.market.indexOf(Text) === -1)
     );
     setData(data);
-    // setText('');
+    setText('');
   };
 
   const onChangeText = (e) => {
