@@ -24,6 +24,7 @@ function App() {
           <Route exact path="/도매" component={Wholesale} />
           <Route exact path="/후기" component={Review} />
           <Route exact path="/문의" component={Customer} />
+          <Route exact path="/강서농수산물시장청정수산" component={Customer} />
         </Switch>
       </BrowserRouter>
     </>

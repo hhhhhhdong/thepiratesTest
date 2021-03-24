@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { storeData } from '../data/demo_data';
 
@@ -8,11 +8,29 @@ import Search from '../utils/Search';
 
 function Market() {
   const [Data, setData] = useState(storeData);
+  const [ScrollPage, setScrollPage] = useState(1);
+
+  const infiniteScroll = () => {
+    const { documentElement, body } = document;
+
+    const scrollHeight = Math.max(documentElement.scrollHeight, body.scrollHeight);
+    const scrollTop = Math.max(documentElement.scrollTop, body.scrollTop);
+    const clientHeight = documentElement.clientHeight;
+
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setScrollPage((state) => state + 1);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', infiniteScroll);
+  }, []);
+
   return (
     <Layout>
       <Filter Data={Data} setData={setData} />
-      <Search />
-      {Data.map((v) => (
+      <Search setData={setData} />
+      {Data.slice(0, ScrollPage * 10).map((v) => (
         <S.StoreCardWrap>
           <div>
             <img src={v.thumbnail} alt={v.label} />
